@@ -1,14 +1,16 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+import { env } from "./config/env.js";
+import authRoute from "./modules/auth/auth.route.js";
 
-const PORT = 4001;
 const app = express();
 app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("hello from server");
-});
+app.use("/v1/auth", authRoute);
 
-app.listen(PORT, () => {
-  console.log(`Server started on PORT: ${PORT}`);
+app.listen(env.PORT, () => {
+  console.log(`Server started on PORT: ${env.PORT}`);
 });
