@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import type { Payload } from "../config/jwt.js";
 import { env } from "../config/env.js";
-import { prisma } from "../config/db.js";
+import { prisma } from "../db/prisma.js";
 
 export const protectRoute = async (
   req: Request,
